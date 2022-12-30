@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<main>
+    <form class="flow-content" action="{% url 'foodlog-delete' log.id %}" method="POST">
+        <h1>delete food log</h1>
+        <p class="subhead">are you sure you want to delete <a class="link"
+                href="{% url 'overview' %}">{{log.food.name}}</a>?</p>
+        <a class="btn goback" href="{% url 'overview' %}">go back</a>
+        <input class="btn" type="submit" value="submit">
+        {% csrf_token %}
+    </form>
+</main>
+{% endblock content %}

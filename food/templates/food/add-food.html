@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<main>
+    <form class="flow-content" action="{% url 'add-food' %}" method="POST">
+        <h1>add food</h1>
+        {% for field in form %}
+        <div>
+            <label class="edit-label">{{field.label}}</label>
+            {{field}}
+        </div>
+        {% endfor %}
+        <div class="add-food-btns">
+            <a class="btn goback" href="{% url 'food-list' %}">go back</a>
+            <input class="btn" type="submit" value="submit">
+        </div>
+        {% csrf_token %}
+    </form>
+</main>
+
+{% endblock content %}

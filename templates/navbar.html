@@ -1,0 +1,18 @@
+<header class="main-header">
+    <nav class="main-nav">
+        <div class="logo-box">
+            <a class="logo-text" href="{% url 'index' %}">macro</a>
+        </div>
+        <ul class="nav-list">
+            <li><a class="link" href="{% url 'food-list' %}">Food</a></li>
+            <li><a class="link" href="{% url 'overview' %}">Overview</a></li>
+            {% if request.user.is_authenticated %}
+            <li><a class="link" href="{% url 'account' %}">Account</a></li>
+            <li><a class="link" href="{% url 'logout' %}">Sign Out</a></li>
+            {% else %}
+            <li><a class="link" href="{% url 'login' %}">Sign In</a></li>
+            <li><a class="link" href="{% url 'register' %}">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>

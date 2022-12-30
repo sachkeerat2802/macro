@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="main-account flow-content">
+    <h1>account</h1>
+    <div class="main-account flex">
+        <div class="flow-content">
+            <div class="flow-content account-info-box">
+                <div>
+                    <p class="account-label">username</p>
+                    <p class="account-info">{{profile.username}}</p>
+                </div>
+                <div>
+                    <p class="account-label">name</p>
+                    <p class="account-info">{{profile.name}}</p>
+                </div>
+                <div>
+                    <p class="account-label">email</p>
+                    <p class="account-info">{{profile.email}}</p>
+                </div>
+                <div>
+                    <p class="account-label">location</p>
+                    <p class="account-info">{{profile.location}}</p>
+                </div>
+                {% if profile.weight == None %}
+                <div>
+                    <p class="account-label">weight</p>
+                    <p class="account-info">{{profile.weight}}</p>
+                </div>
+                {% else %}
+                <div>
+                    <p class="account-label">weight</p>
+                    <p class="account-info">{{profile.weight}} {{profile.metric}}</p>
+                </div>
+                {% endif %}
+                {% if profile.calorie_goal == None %}
+                <div>
+                    <p class="account-label">calorie goal</p>
+                    <p class="account-info">{{profile.calorie_goal}}</p>
+                </div>
+                {% else %}
+                <div>
+                    <p class="account-label">calorie goal</p>
+                    <p class="account-info">{{profile.calorie_goal}} calories</p>
+                </div>
+                {% endif %}
+            </div>
+            <a class="btn goback" href="{% url 'edit-account' %}">edit</a>
+        </div>
+        <div class="account-right flex">
+            <form class="weightlog-form flex" action="{% url 'account' %}" method="POST">
+                <div>
+                    <label class="edit-label">{{form.weight.label}}</label>
+                    <span>({{profile.metric}})</span>
+                    {{form.weight}}
+                </div>
+                <div>
+                    <label class="edit-label">{{form.entry_date.label}}</label>
+                    {{form.entry_date}}
+                </div>
+                <input class="btn" type="submit" value="submit">
+                {% csrf_token %}
+            </form>
+            <table>
+                <tr>
+                    <th>weight ({{profile.metric}})</th>
+                    <th>date (yyyy-mm-dd)</th>
+                    <th>edit</th>
+                    <th>delete</th>
+                </tr>
+                {% for weight in weights %}
+                <tr>
+                    <td>{{weight.weight}}</td>
+                    <td>{{weight.entry_date|date:"F d Y"}}</td>
+                    <td><a class="table-icon table-icon-edit" href="{% url 'edit-weightlog' weight.id %}"><span
+                                class="material-symbols-outlined">edit</span></a></td>
+                    <td><a class="table-icon table-icon-delete" href="{% url 'delete-weightlog' weight.id %}"><span
+                                class="material-symbols-outlined">delete</span></a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</main>
+{% endblock content %}

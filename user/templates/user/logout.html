@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<main>
+    <form action="{% url 'logout' %}" method="POST" class="simple-form flow-content">
+        <div>
+            <h1>logout</h1>
+            <p class="subhead">are you sure you want to logout?</p>
+        </div>
+        <div class="btn goback" onClick="javascript:history.go(-1);">go back</div>
+        <input class="btn" type="submit" value="confirm">
+        {% csrf_token %}
+    </form>
+</main>
+{% endblock content %}

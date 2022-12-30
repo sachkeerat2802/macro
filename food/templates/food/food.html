@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="flow-content">
+    <h1 style="text-transform: lowercase;">{{food.name}}</h1>
+    <div>
+        <p class="account-label">calories</p>
+        <p class="account-info">{{food.calories}}</p>
+    </div>
+    <div>
+        <p class="account-label">fat</p>
+        <p class="account-info">{{food.fat}}</p>
+    </div>
+    <div>
+        <p class="account-label">carbohydrates</p>
+        <p class="account-info">{{food.carbohydrates}}</p>
+    </div>
+    <div>
+        <p class="account-label">protein</p>
+        <p class="account-info">{{food.protein}}</p>
+    </div>
+    <div>
+        <p class="account-label">quantity</p>
+        <p class="account-info">{{food.quantity}} <span>(gms)</span></p>
+    </div>
+    <div class="flex">
+        <a class="btn goback" style="margin-right: 0;" href="{% url 'food-list' %}">go back</a><br>
+        <a class="btn" href="{% url 'food-edit' food.id %}">edit</a><br>
+        <a class="btn" href="{% url 'food-delete' food.id %}">delete</a>
+    </div>
+</main>
+{% endblock content %}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<main>
+    <h1 class="page-title">overview</h1>
+    <div class="overview-divider">
+        <div class="overview-foodlogs flow-content">
+            <form class="overview-form flex" action="{% url 'overview' %}" method="POST">
+                <div>
+                    <label class="edit-label">food</label>
+                    <select class="edit-input" name="foodlog" id="foodlog" required>
+                        <option hidden value="Choose Here">choose here</option>
+                        {% for food in user_food %}
+                        <option value="{{food}}">{{food}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <input class="btn" type="submit" value="add food">
+                {% csrf_token %}
+            </form>
+            <table class="overview-table">
+                <thead>
+                    <tr>
+                        <th>food</th>
+                        <th>calories</th>
+                        <th>fats</th>
+                        <th>carbohydrates</th>
+                        <th>protein</th>
+                        <th>delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in logs %}
+                    <tr>
+                        <td>{{log.food.name}}</td>
+                        <td>{{log.food.calories}}</td>
+                        <td>{{log.food.fat}}</td>
+                        <td>{{log.food.carbohydrates}}</td>
+                        <td>{{log.food.protein}}</td>
+                        <td><a class="table-icon table-icon-delete" href="{% url 'foodlog-delete' log.id %}"><span
+                                    class="material-symbols-outlined">
+                                    delete
+                                </span></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a class="delete-all-logs btn" href="{% url 'foodlogs-clear' %}">reset</a>
+        </div>
+        <div class="overview-graph">
+            <div class="graph-header flex">
+                <p class="graph-heading">nutrient breakdown</p>
+            </div>
+            <canvas width="400" height="400" id="foodlogGraph"></canvas>
+        </div>
+    </div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="{% static 'js/overview.js' %}"></script>
+{% endblock content %}

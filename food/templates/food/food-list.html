@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="main-foodlist flex">
+    <div>
+        <h1>food list</h1>
+        <p class="subhead">don't see your favourite dishes here? <a class="link" href="{% url 'add-food' %}">add your
+                own
+                food!</a></p>
+    </div>
+    <div class="foodlist-cards flex">
+        {% for food in foods %}
+        <div class="food-card flow-content">
+            <div>
+                <p class="account-label">name</p>
+                <p class="account-info"><a class="link" href="{% url 'food' food.id %}">{{food.name}}</a></p>
+            </div>
+            <div>
+                <p class="account-label">calories</p>
+                <p class="account-info">{{food.calories}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock content %}

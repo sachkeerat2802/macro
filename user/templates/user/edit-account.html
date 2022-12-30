@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<main>
+    <form class="flow-content" action="{% url 'edit-account' %}" method="POST">
+        <h1>edit account</h1>
+        {% for field in form %}
+        <div>
+            <label class="edit-label">{{field.label}}</label>
+            {{field}}
+        </div>
+        {% endfor %}
+        <input class="btn" type="submit" value="submit">
+        {% csrf_token %}
+    </form>
+</main>
+{% endblock content %}

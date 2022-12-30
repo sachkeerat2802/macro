@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<main>
+    <form class="edit-form flow-content" action="{% url 'edit-weightlog' weight.id %}" method="POST">
+        <h1>edit weightlog</h1>
+        {% for field in form %}
+        <div>
+            <label class="edit-label">{{field.label}}</label>
+            {{field}}
+        </div>
+        {% endfor %}
+        <a class="btn goback" href="{% url 'account' %}">go back</a>
+        <input class="btn" type="submit" value="submit">
+        {% csrf_token %}
+    </form>
+</main>
+{% endblock content %}

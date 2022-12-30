@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="main-loginregister flex">
+    <form class="loginregister-form flow-content" action="{% url 'login' %}" method="POST">
+        <h1>login</h1>
+        <div class="animated-input-box">
+            <input class="animated-input" required type="text" name="username" id="username">
+            <label class="animated-label" for="username">username</label>
+        </div>
+        <div class="animated-input-box">
+            <input class="animated-input" required type="password" name="password" id="password">
+            <label class="animated-label" for="password">password</label>
+        </div>
+        <div class="flow-content">
+            <input class="btn" type="submit" value="submit">
+        </div>
+        <a class="link login-signupinstead" href="{% url 'register' %}">sign up instead!</a>
+        {% csrf_token %}
+    </form>
+</main>
+{% endblock content %}
