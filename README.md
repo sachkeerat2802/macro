@@ -31,3 +31,23 @@ Macro is a web-based calorie tracker developed as a college project. It allows u
 ---
 
 ## Screenshots
+
+Login Page
+![Login Page](https://github.com/sachkeerat2802/macro/blob/main/screenshots/login.png)
+
+Register Page
+![Register Page ](https://github.com/sachkeerat2802/macro/blob/main/screenshots/register.png)
+
+Account and Weight Tracking
+![Account and Weight Tracking ](https://github.com/sachkeerat2802/macro/blob/main/screenshots/account.png)
+
+Calorie Tracking
+![Calorie Tracking](https://github.com/sachkeerat2802/macro/blob/main/screenshots/overview.png)
+
+Food List
+![Food List](https://github.com/sachkeerat2802/macro/blob/main/screenshots/foodlist.png)
+
+Custom Food Addition
+![Custom Food Addition](https://github.com/sachkeerat2802/macro/blob/main/screenshots/addfood.png)
+
+---
